@@ -10,7 +10,7 @@
 <body class="page page-leaderboard">
   <header class="site-header">
     <h1>Leaderboard</h1>
-    <p class="subtitle">Top scores (stored in your browser)</p>
+    <p class="subtitle">Top scores (shared across players)</p>
   </header>
 
   <main class="main-vertical">
@@ -19,15 +19,42 @@
         <thead>
           <tr><th>#</th><th>Name</th><th>Score</th><th>Mode</th></tr>
         </thead>
-        <tbody id="leaderboard-body"></tbody>
+        <tbody id="leaderboard-body" {% if entries %}data-server="true"{% endif %}>
+          {% if entries and entries|length > 0 %}
+            {% for row in entries %}
+              <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ row.name|e }}</td>
+                <td>{{ row.score }}</td>
+                <td>{{ row.difficulty|e }}</td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr><td colspan="4" style="color:var(--muted)">No scores yet. Play a quiz to add your score.</td></tr>
+          {% endif %}
+        </tbody>
       </table>
 
       <div class="action-row">
-        <button class="btn" onclick="localStorage.removeItem('leaderboard'); location.reload();">Clear</button>
+        <button id="clear-server" class="btn">Clear</button>
         <button class="btn btn-ghost" onclick="location.href='/'">Home</button>
       </div>
     </div>
   </main>
+
+  <script>
+    // clear server leaderboard (development convenience)
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('clear-server');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        if (!confirm('Clear the shared leaderboard? This removes all entries.')) return;
+        fetch('/clear_leaderboard', { method: 'POST' }).then(function (r) {
+          if (r.ok) location.reload(); else alert('Failed to clear leaderboard');
+        }).catch(function () { alert('Network error'); });
+      });
+    });
+  </script>
 
   <footer class="site-footer">
     Designed by <a href="https://github.com/Akhil-28407" target="_blank" rel="noreferrer">@Akhil-28407</a>

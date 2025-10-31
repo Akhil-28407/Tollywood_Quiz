@@ -204,9 +204,24 @@
       saveBtn.addEventListener("click", () => {
         const name = playerName.value.trim();
         if (!name) return alert("Please enter your name to save the score.");
-        window.saveToLeaderboard(name, lastScore, lastLevel);
-        alert("Score saved! Check leaderboard.");
-        window.location.href = "/leaderboard";
+        // save locally for offline / backward compatibility
+        try { window.saveToLeaderboard(name, lastScore, lastLevel); } catch (e) {}
+        // try to save to server so other players can see it
+        fetch('/save_score', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, score: lastScore, difficulty: lastLevel })
+        }).then(function (res) {
+          if (!res.ok) throw new Error('Network response not ok');
+          return res.json();
+        }).then(function (j) {
+          alert('Score saved! Check leaderboard.');
+          window.location.href = '/leaderboard';
+        }).catch(function () {
+          // if server save fails, still allow viewing local leaderboard
+          alert('Saved locally but could not save to server. You can still view your score in the leaderboard on this device.');
+          window.location.href = '/leaderboard';
+        });
       });
     }
 
