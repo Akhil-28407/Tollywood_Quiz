@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Leaderboard | Telugu Cinema</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='quiz.js') }}"></script>
+</head>
+<body class="page page-leaderboard">
+  <header class="site-header">
+    <h1>Leaderboard</h1>
+    <p class="subtitle">Top scores (stored in your browser)</p>
+  </header>
+
+  <main class="main-vertical">
+    <div class="card">
+      <table class="leaderboard-table" aria-live="polite">
+        <thead>
+          <tr><th>#</th><th>Name</th><th>Score</th><th>Mode</th></tr>
+        </thead>
+        <tbody id="leaderboard-body"></tbody>
+      </table>
+
+      <div class="action-row">
+        <button class="btn" onclick="localStorage.removeItem('leaderboard'); location.reload();">Clear</button>
+        <button class="btn btn-ghost" onclick="location.href='/'">Home</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Designed by <a href="https://github.com/Akhil-28407" target="_blank" rel="noreferrer">@Akhil-28407</a>
+  </footer>
+</body>
+</html>

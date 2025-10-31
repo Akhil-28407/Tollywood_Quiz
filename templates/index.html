@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Telugu Cinema Millionaire</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page page-home">
+  <header class="site-header">
+    <h1>🎬 Telugu Cinema Millionaire</h1>
+    <p class="subtitle">Test your Tollywood knowledge — pick a difficulty and start!</p>
+  </header>
+
+  <main class="main-vertical">
+    <div class="card">
+      <button class="btn" onclick="location.href='/difficulty'">Start Quiz</button>
+      <button class="btn btn-ghost" onclick="location.href='/leaderboard'">Leaderboard</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Designed by <a href="https://github.com/Akhil-28407" target="_blank" rel="noreferrer">@Akhil-28407</a>
+  </footer>
+</body>
+</html>

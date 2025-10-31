@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz | Telugu Cinema</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='quiz.js') }}"></script>
+</head>
+<body class="page page-quiz">
+  <header class="site-header">
+    <h1 id="page-title">Quiz</h1>
+    <p class="subtitle" id="mode-label">Loading...</p>
+  </header>
+
+  <main class="main-vertical">
+    <div class="quiz-box card" id="quiz-box" aria-live="polite">
+      <h2 id="question" class="question">Loading question...</h2>
+
+      <div id="options" class="options" role="list"></div>
+
+      <div class="action-row">
+        <button id="next-btn" class="btn" aria-label="Next question">Next</button>
+        <button id="quit-btn" class="btn btn-ghost" aria-label="Quit">Quit</button>
+      </div>
+
+      <div class="progress-vertical" aria-hidden="true">
+        <div class="progress-label"><span id="progress-text">0/0</span></div>
+        <div class="progress">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Designed by <a href="https://github.com/Akhil-28407" target="_blank" rel="noreferrer">@Akhil-28407</a>
+  </footer>
+</body>
+</html>

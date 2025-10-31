@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Select Difficulty</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page page-difficulty">
+  <header class="site-header">
+    <h1>Select Difficulty</h1>
+    <p class="subtitle">Choose a mode — Easy, Medium or Hard.</p>
+  </header>
+
+  <main class="main-vertical">
+    <div class="card">
+      <button class="btn" onclick="location.href='/quiz?level=easy'">Easy</button>
+      <button class="btn" onclick="location.href='/quiz?level=medium'">Medium</button>
+      <button class="btn" onclick="location.href='/quiz?level=hard'">Hard</button>
+      <button class="btn btn-ghost" onclick="location.href='/'">Back</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Designed by <a href="https://github.com/Akhil-28407" target="_blank" rel="noreferrer">@Akhil-28407</a>
+  </footer>
+</body>
+</html>

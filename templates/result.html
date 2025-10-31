@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Result | Telugu Cinema</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='quiz.js') }}"></script>
+</head>
+<body class="page page-result">
+  <header class="site-header">
+    <h1>Quiz Complete</h1>
+    <p class="subtitle" id="result-sub">Here is your score</p>
+  </header>
+
+  <main class="main-vertical">
+    <div class="card result-box">
+      <div class="score-large" id="score-display">0 / 0</div>
+      <input id="player-name" class="input" type="text" placeholder="Enter your name" maxlength="25" />
+      <div class="action-row">
+        <button id="save-score-btn" class="btn">Save Score</button>
+        <button class="btn btn-ghost" onclick="location.href='/difficulty'">Play Again</button>
+      </div>
+      <div class="confetti-holder" id="confetti-holder" aria-hidden="true"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Designed by <a href="https://github.com/Akhil-28407" target="_blank" rel="noreferrer">@Akhil-28407</a>
+  </footer>
+</body>
+</html>
